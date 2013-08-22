@@ -6,7 +6,6 @@ module Jasmine
   end
 
   def self.initialize_config
-    return if @config
     @config = Jasmine::Configuration.new
     core_config = Jasmine::CoreConfiguration.new
 
@@ -55,11 +54,11 @@ module Jasmine
       })
     end
 
+    @config
   end
 
   def self.config
-    initialize_config
-    @config
+    @config || initialize_config
   end
 
   def self.load_configuration_from_yaml(path = nil)
